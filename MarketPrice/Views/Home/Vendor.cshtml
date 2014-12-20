@@ -1,0 +1,54 @@
+﻿@model MarketPrice.Models.Vendor
+
+@{
+    ViewBag.Title = "Vendor";
+}
+
+<h2>@Model.FullName</h2>
+
+<div>
+    <h4>@Model.Username</h4>
+    <hr />
+    <h4>
+        <label>Commodities</label>
+       
+    </h4>
+    
+    <p>
+         @Html.ActionLink("Add Commodity", "EditCommodityVendor", "Home", new{vendorId = Model.Id},  new {@class = "btn btn-primary"})
+    </p>
+    <div>
+        @if (Model.VendorCommodities.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit of Sale</th>
+                        <th>Qauntity</th>
+                        <th>Date Added</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model.VendorCommodities)
+                    {
+                        <tr>
+                            <td>@m.Commodity.Name</td>
+                            <td>@m.Commodity.UnitOfSale</td>
+                            <td>@m.Price</td>
+                            <td>@m.CreatedOn</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditCommodityVendor", "Home", new { vendorId = Model.Id, id = m.Id }, new { @class = "text-blue" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <label><em>No Commodities sold by this vendor as yet.</em></label>
+        }
+    </div>
+</div>

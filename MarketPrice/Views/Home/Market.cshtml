@@ -1,0 +1,46 @@
+﻿@model MarketPrice.Models.Market
+
+@{
+    ViewBag.Title = "Market";
+}
+
+<h2>Market</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <p>
+        @Model.Address
+    </p>
+    <div>
+        <div>
+            @Html.ActionLink("Add Vendor", "EditVendor", new {marketId = Model.Id}, new {@class = "btn btn-default"})
+        </div>
+
+        @if (Model.Vendors.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Full Names</td>
+                        <td>Username</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model.Vendors)
+                    {
+                        <tr>
+                            <td>@m.FullName</td>
+                            <td>@m.Username</td>
+                            <td>
+                                @Html.ActionLink("View", "Vendor", "Home", new { id = m.Id }, null) |
+                                @Html.ActionLink("Edit", "EditVendor", "Home", new { id = m.Id, marketId = Model.Id }, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
