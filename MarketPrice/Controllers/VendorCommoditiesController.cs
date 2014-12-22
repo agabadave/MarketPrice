@@ -50,6 +50,10 @@ namespace MarketPrice.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (vendorCommodity.Id <= 0)
+                vendorCommodity.CreatedOn = DateTime.Now;
+            vendorCommodity.LastModified = DateTime.Now;
+
             _repo.SaveOrUpdate(vendorCommodity, vendorCommodity.Id);
 
             return CreatedAtRoute("DefaultApi", new { id = vendorCommodity.Id }, vendorCommodity);
@@ -63,6 +67,10 @@ namespace MarketPrice.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            if (vendorCommodity.Id <= 0)
+                vendorCommodity.CreatedOn = DateTime.Now;
+            vendorCommodity.LastModified = DateTime.Now;
 
             _repo.SaveOrUpdate(vendorCommodity, vendorCommodity.Id);
 

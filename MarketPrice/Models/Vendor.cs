@@ -27,4 +27,11 @@ namespace MarketPrice.Models
 
         public virtual ICollection<VendorCommodity> VendorCommodities { get; set; } 
     }
+
+    public class LoginDetail
+    {
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+    }
 }

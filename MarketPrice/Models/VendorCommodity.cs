@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace MarketPrice.Models
 {
@@ -23,9 +24,11 @@ namespace MarketPrice.Models
         [Required]
         public double Price { get; set; }
 
+        [JsonConverter(typeof(CustomDateFormat))]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss}")]
         public DateTime CreatedOn { get; set; }
 
+        [JsonConverter(typeof(CustomDateFormat))]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss}")]
         public DateTime LastModified { get; set; }
     }

@@ -40,10 +40,16 @@ namespace MarketPrice.Controllers
 
             return Ok(vendor);
         }
-
-        public IHttpActionResult GetVendor(string username, string password)
+        /// <summary>
+        /// Enables the Vendors to Login.
+        /// </summary>
+        /// <param name="login">Login Details of the Vendor, that is,  either Username or Password!</param>
+        /// <returns>Returns Either the Vendor who has loged in or a Not Found exception</returns>
+        [Route("api/Vendors/Login")]
+        [HttpPost]
+        public IHttpActionResult LoginVendor(LoginDetail login)
         {
-            var vendor = _repo.GetVendor(username, password);
+            var vendor = _repo.GetVendor(login.Username, login.Password);
             if (vendor == null)
                 return NotFound();
 
@@ -108,4 +114,6 @@ namespace MarketPrice.Controllers
             return _repo.Count<Vendor>(id) > 0;
         }
     }
+
+    
 }

@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Commodity.cs" />
+    <Compile Include="Models\CustomDateFormat.cs" />
     <Compile Include="Models\DbContext.cs" />
     <Compile Include="Models\Market.cs" />
     <Compile Include="Models\Vendor.cs" />
